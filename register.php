@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+// Already logged in? No need to register again
+if (isset($_SESSION["user_id"])) {
+    header("Location: dashboard.php");
+    exit;
+}
 require_once __DIR__ . "/includes/database.php";
 
 // ---------- Optional profile picture upload ----------
